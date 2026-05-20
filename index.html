@@ -170,7 +170,7 @@
     }
 
     section{
-      padding:120px 0;
+      padding:40px 0;
       position:relative;
       z-index:1;
     }
@@ -282,13 +282,15 @@
     }
 /* 🔥 ANIMACIÓN SCROLL */
 
-    .card{
+    .card,
+    .publication{
       opacity:0;
       transform:translateY(40px);
       transition:all 0.8s ease;
     }
     
-    .card.show{
+    .card.show,
+    .publication.show{
       opacity:1;
       transform:translateY(0);
     }
@@ -675,7 +677,7 @@ init();
 draw();
 </script>
 <script>
-const cards = document.querySelectorAll('.card');
+const elements = document.querySelectorAll('.card, .publication');
 
 const observer = new IntersectionObserver((entries) => {
   entries.forEach(entry => {
@@ -687,8 +689,8 @@ const observer = new IntersectionObserver((entries) => {
   threshold: 0.15
 });
 
-cards.forEach(card => {
-  observer.observe(card);
+elements.forEach(el => {
+  observer.observe(el);
 });
 </script>
 </body>
