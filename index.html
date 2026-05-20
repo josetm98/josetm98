@@ -280,29 +280,24 @@
       color:#7c8798;
       border-top:1px solid rgba(255,255,255,0.05);
     }
+/* 🔥 ANIMACIÓN SCROLL */
 
+    .card{
+      opacity:0;
+      transform:translateY(40px);
+      transition:all 0.8s ease;
+    }
+    
+    .card.show{
+      opacity:1;
+      transform:translateY(0);
+    }
     @media(max-width:768px){
       h1{font-size:2.7rem;}
       .nav-links{display:none;}
       .hero h2{font-size:1.2rem;}
     }
-    <script>
-    const cards = document.querySelectorAll('.card');
-    
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if(entry.isIntersecting){
-          entry.target.classList.add('show');
-        }
-      });
-    }, {
-      threshold: 0.15
-    });
-    
-    cards.forEach(card => {
-      observer.observe(card);
-    });
-    </script>
+
   </style>
 </head>
 
@@ -610,18 +605,6 @@
     </div>
 
   </footer>
-    /* 🔥 ANIMACIÓN SCROLL (PROYECTOS) */
-
-.card{
-  opacity:0;
-  transform:translateY(40px);
-  transition:all 0.8s ease;
-}
-
-.card.show{
-  opacity:1;
-  transform:translateY(0);
-}
 <!-- GRAFO SCRIPT -->
 <script>
 const canvas = document.getElementById("bg-canvas");
@@ -691,6 +674,22 @@ function draw(){
 init();
 draw();
 </script>
+<script>
+const cards = document.querySelectorAll('.card');
 
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if(entry.isIntersecting){
+      entry.target.classList.add('show');
+    }
+  });
+}, {
+  threshold: 0.15
+});
+
+cards.forEach(card => {
+  observer.observe(card);
+});
+</script>
 </body>
 </html>
