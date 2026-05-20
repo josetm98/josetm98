@@ -5,578 +5,427 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>José Ramón Torres Martín | Consultor IA</title>
 
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 
   <style>
 
-    *{
-      margin:0;
-      padding:0;
-      box-sizing:border-box;
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
     }
 
-    html{
-      scroll-behavior:smooth;
+    html {
+      scroll-behavior: smooth;
     }
 
-    body{
-      font-family:'Inter',sans-serif;
-      background:#0B0F19;
-      color:#F5F7FA;
-      line-height:1.7;
+    body {
+      font-family: 'Inter', sans-serif;
+      background: #0B0F19;
+      color: #F5F7FA;
+      line-height: 1.7;
+      overflow-x: hidden;
     }
 
-    a{
-      text-decoration:none;
-      color:inherit;
+    /* 🎯 FONDO GRAFO */
+    #bg-canvas {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+      opacity: 0.22;
     }
 
-    .container{
-      width:90%;
-      max-width:1200px;
-      margin:auto;
+    a {
+      text-decoration: none;
+      color: inherit;
     }
 
-    /* NAVBAR */
-
-    nav{
-      position:fixed;
-      width:100%;
-      top:0;
-      z-index:1000;
-      background:rgba(11,15,25,0.85);
-      backdrop-filter:blur(12px);
-      border-bottom:1px solid rgba(255,255,255,0.05);
+    .container {
+      width: 90%;
+      max-width: 1200px;
+      margin: auto;
     }
 
-    .nav-content{
-      display:flex;
-      justify-content:space-between;
-      align-items:center;
-      padding:20px 0;
+    /* NAV */
+    nav {
+      position: fixed;
+      width: 100%;
+      top: 0;
+      z-index: 1000;
+      background: rgba(11,15,25,0.75);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(255,255,255,0.05);
     }
 
-    .logo{
-      font-weight:800;
-      font-size:1.2rem;
-      color:#4F8CFF;
+    .nav-content {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px 0;
     }
 
-    .nav-links{
-      display:flex;
-      gap:30px;
+    .logo {
+      font-weight: 800;
+      color: #4F8CFF;
     }
 
-    .nav-links a{
-      color:#cfd6e4;
-      transition:0.3s;
-      font-weight:500;
+    .nav-links {
+      display: flex;
+      gap: 25px;
     }
 
-    .nav-links a:hover{
-      color:#4F8CFF;
+    .nav-links a {
+      color: #cfd6e4;
+      font-weight: 500;
+    }
+
+    .nav-links a:hover {
+      color: #4F8CFF;
     }
 
     /* HERO */
-
-    .hero{
-      min-height:100vh;
-      display:flex;
-      align-items:center;
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
       background:
-      radial-gradient(circle at top right,#4F8CFF22,transparent 30%),
-      radial-gradient(circle at bottom left,#00C89622,transparent 30%);
+        radial-gradient(circle at top right, rgba(79,140,255,0.12), transparent 40%),
+        radial-gradient(circle at bottom left, rgba(0,200,150,0.10), transparent 40%);
     }
 
-    .hero-content{
-      max-width:800px;
+    .hero-content {
+      max-width: 850px;
     }
 
-    .badge{
-      display:inline-block;
-      padding:10px 18px;
-      background:#111827;
-      border:1px solid rgba(255,255,255,0.08);
-      border-radius:999px;
-      color:#00C896;
-      margin-bottom:30px;
-      font-size:0.9rem;
+    .badge {
+      display: inline-block;
+      padding: 10px 18px;
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,0.08);
+      color: #00C896;
+      margin-bottom: 25px;
+      background: rgba(17,24,39,0.6);
     }
 
-    h1{
-      font-size:4rem;
-      line-height:1.1;
-      margin-bottom:20px;
-      font-weight:800;
+    h1 {
+      font-size: 4rem;
+      font-weight: 800;
+      line-height: 1.1;
+      margin-bottom: 20px;
     }
 
-    .hero h2{
-      font-size:1.5rem;
-      color:#4F8CFF;
-      margin-bottom:25px;
-      font-weight:600;
+    h2 {
+      color: #4F8CFF;
+      font-size: 1.4rem;
+      margin-bottom: 20px;
     }
 
-    .hero p{
-      color:#cfd6e4;
-      font-size:1.15rem;
-      margin-bottom:40px;
-      max-width:700px;
+    p {
+      color: #cfd6e4;
+      margin-bottom: 30px;
+      max-width: 750px;
     }
 
-    .buttons{
-      display:flex;
-      gap:20px;
-      flex-wrap:wrap;
+    .buttons {
+      display: flex;
+      gap: 15px;
+      flex-wrap: wrap;
     }
 
-    .btn{
-      padding:15px 28px;
-      border-radius:12px;
-      font-weight:600;
-      transition:0.3s;
+    .btn {
+      padding: 14px 22px;
+      border-radius: 10px;
+      font-weight: 600;
+      transition: 0.3s;
     }
 
-    .btn-primary{
-      background:#4F8CFF;
-      color:white;
+    .btn-primary {
+      background: #4F8CFF;
+      color: white;
     }
 
-    .btn-primary:hover{
-      background:#3774eb;
-      transform:translateY(-2px);
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      background: #3b78f0;
     }
 
-    .btn-secondary{
-      border:1px solid rgba(255,255,255,0.15);
-      color:white;
+    .btn-secondary {
+      border: 1px solid rgba(255,255,255,0.15);
     }
 
-    .btn-secondary:hover{
-      border-color:#4F8CFF;
-      color:#4F8CFF;
+    .btn-secondary:hover {
+      border-color: #4F8CFF;
+      color: #4F8CFF;
     }
 
-    /* SECTIONS */
-
-    section{
-      padding:120px 0;
+    section {
+      padding: 110px 0;
     }
 
-    .section-title{
-      font-size:2.5rem;
-      margin-bottom:20px;
-      font-weight:800;
+    .section-title {
+      font-size: 2.5rem;
+      margin-bottom: 15px;
     }
 
-    .section-subtitle{
-      color:#9aa4b2;
-      margin-bottom:60px;
-      max-width:800px;
+    .section-subtitle {
+      color: #9aa4b2;
+      margin-bottom: 50px;
+      max-width: 800px;
     }
 
-    /* CARDS */
-
-    .grid{
-      display:grid;
-      grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
-      gap:30px;
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 25px;
     }
 
-    .card{
-      background:#111827;
-      border:1px solid rgba(255,255,255,0.06);
-      border-radius:20px;
-      padding:30px;
-      transition:0.3s;
+    .card {
+      background: rgba(17,24,39,0.8);
+      border: 1px solid rgba(255,255,255,0.06);
+      padding: 25px;
+      border-radius: 18px;
+      transition: 0.3s;
     }
 
-    .card:hover{
-      transform:translateY(-5px);
-      border-color:#4F8CFF55;
+    .card:hover {
+      transform: translateY(-5px);
+      border-color: rgba(79,140,255,0.5);
     }
 
-    .card h3{
-      margin-bottom:15px;
-      color:#4F8CFF;
-      font-size:1.3rem;
+    .card h3 {
+      color: #4F8CFF;
+      margin-bottom: 10px;
     }
 
-    .card p{
-      color:#cfd6e4;
+    .publication {
+      background: rgba(17,24,39,0.8);
+      padding: 20px;
+      border-left: 3px solid #4F8CFF;
+      margin-bottom: 20px;
     }
 
-    /* PUBLICATIONS */
-
-    .publication{
-      padding:25px;
-      border-left:3px solid #4F8CFF;
-      margin-bottom:25px;
-      background:#111827;
-      border-radius:0 15px 15px 0;
+    .tech-stack {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
     }
 
-    .publication h4{
-      margin-bottom:10px;
-      color:white;
+    .tech {
+      padding: 10px 14px;
+      border-radius: 999px;
+      background: rgba(17,24,39,0.8);
+      border: 1px solid rgba(255,255,255,0.08);
+      color: #4F8CFF;
     }
 
-    .publication p{
-      color:#cfd6e4;
-      font-size:0.95rem;
+    .contact-links {
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+      flex-wrap: wrap;
     }
 
-    /* TECH */
-
-    .tech-stack{
-      display:flex;
-      flex-wrap:wrap;
-      gap:15px;
+    .contact-links a {
+      padding: 14px 18px;
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 10px;
     }
 
-    .tech{
-      padding:12px 18px;
-      border-radius:999px;
-      background:#111827;
-      border:1px solid rgba(255,255,255,0.08);
-      color:#4F8CFF;
-      font-weight:600;
+    footer {
+      text-align: center;
+      padding: 40px;
+      border-top: 1px solid rgba(255,255,255,0.05);
+      color: #7c8798;
     }
 
-    /* CONTACT */
-
-    .contact{
-      text-align:center;
-    }
-
-    .contact-links{
-      margin-top:30px;
-      display:flex;
-      justify-content:center;
-      gap:20px;
-      flex-wrap:wrap;
-    }
-
-    .contact-links a{
-      padding:15px 24px;
-      background:#111827;
-      border-radius:12px;
-      transition:0.3s;
-      border:1px solid rgba(255,255,255,0.08);
-    }
-
-    .contact-links a:hover{
-      border-color:#4F8CFF;
-      color:#4F8CFF;
-    }
-
-    footer{
-      padding:40px 0;
-      text-align:center;
-      color:#7c8798;
-      border-top:1px solid rgba(255,255,255,0.05);
-    }
-
-    @media(max-width:768px){
-
-      h1{
-        font-size:2.7rem;
+    @media (max-width: 768px) {
+      h1 {
+        font-size: 2.6rem;
       }
 
-      .nav-links{
-        display:none;
+      .nav-links {
+        display: none;
       }
-
-      .hero h2{
-        font-size:1.2rem;
-      }
-
     }
 
   </style>
 </head>
+
 <body>
 
-  <!-- NAVBAR -->
+<!-- 🎯 FONDO GRAFO -->
+<canvas id="bg-canvas"></canvas>
 
-  <nav>
-    <div class="container nav-content">
-
-      <div class="logo">
-        JR Torres AI
-      </div>
-
-      <div class="nav-links">
-        <a href="#about">Sobre mí</a>
-        <a href="#projects">Proyectos</a>
-        <a href="#research">Investigación</a>
-        <a href="#contact">Contacto</a>
-      </div>
-
+<!-- NAV -->
+<nav>
+  <div class="container nav-content">
+    <div class="logo">JR Torres AI</div>
+    <div class="nav-links">
+      <a href="#about">Sobre mí</a>
+      <a href="#projects">Proyectos</a>
+      <a href="#research">Investigación</a>
+      <a href="#contact">Contacto</a>
     </div>
-  </nav>
+  </div>
+</nav>
 
-  <!-- HERO -->
+<!-- HERO -->
+<section class="hero">
+  <div class="container hero-content">
 
-  <section class="hero">
+    <div class="badge">Consultor IA · Científico de Datos · Investigador</div>
 
-    <div class="container hero-content">
+    <h1>José Ramón<br>Torres Martín</h1>
 
-      <div class="badge">
-        Consultor IA · Científico de Datos · Investigador
-      </div>
+    <h2>IA aplicada a salud, agricultura y sistemas predictivos</h2>
 
-      <h1>
-        José Ramón<br>
-        Torres Martín
-      </h1>
+    <p>
+      Matemáticas + investigación + ciencia de datos aplicada desde 2020.
+      Especializado en modelos predictivos, series temporales y sistemas inteligentes.
+    </p>
 
-      <h2>
-        Inteligencia Artificial aplicada a salud, agricultura y sistemas predictivos
-      </h2>
-
-      <p>
-        Graduado en Matemáticas, doctorando en la Universidad Rey Juan Carlos y científico de datos desde 2020.
-        Especializado en machine learning, series temporales, análisis estadístico avanzado y gemelos digitales.
-      </p>
-
-      <div class="buttons">
-
-        <a href="#projects" class="btn btn-primary">
-          Ver proyectos
-        </a>
-
-        <a href="#contact" class="btn btn-secondary">
-          Contactar
-        </a>
-
-      </div>
-
+    <div class="buttons">
+      <a class="btn btn-primary" href="#projects">Ver proyectos</a>
+      <a class="btn btn-secondary" href="#contact">Contacto</a>
     </div>
 
-  </section>
+  </div>
+</section>
 
-  <!-- ABOUT -->
+<!-- ABOUT -->
+<section id="about">
+  <div class="container">
+    <h2 class="section-title">Sobre mí</h2>
+    <p class="section-subtitle">
+      Investigador y científico de datos especializado en IA aplicada, modelos estadísticos avanzados y sistemas complejos.
+    </p>
+  </div>
+</section>
 
-  <section id="about">
+<!-- PROJECTS -->
+<section id="projects">
+  <div class="container">
 
-    <div class="container">
+    <h2 class="section-title">Proyectos</h2>
+    <p class="section-subtitle">IA aplicada en salud y agricultura inteligente.</p>
 
-      <h2 class="section-title">
-        Sobre mí
-      </h2>
+    <div class="grid">
 
-      <p class="section-subtitle">
-        Soy científico de datos e investigador especializado en inteligencia artificial aplicada y análisis avanzado de datos.
-        Desde 2020 trabajo en proyectos de IA orientados a salud y agricultura inteligente, desarrollando modelos predictivos,
-        sistemas de monitorización y herramientas de soporte a la decisión basadas en machine learning y análisis temporal.
-      </p>
-
-    </div>
-
-  </section>
-
-  <!-- PROJECTS -->
-
-  <section id="projects">
-
-    <div class="container">
-
-      <h2 class="section-title">
-        Proyectos
-      </h2>
-
-      <p class="section-subtitle">
-        Experiencia en proyectos de investigación y desarrollo de soluciones de IA en sectores estratégicos.
-      </p>
-
-      <div class="grid">
-
-        <div class="card">
-          <h3>PROPHECIA</h3>
-          <p>
-            Análisis de datos de ictus y exposoma del paciente mediante técnicas de machine learning y modelado estadístico.
-          </p>
-        </div>
-
-        <div class="card">
-          <h3>PRISMAX</h3>
-          <p>
-            Herramienta predictiva para anticipar crisis de migraña mediante análisis temporal y modelos de IA.
-          </p>
-        </div>
-
-        <div class="card">
-          <h3>Silicosis Andalucía</h3>
-          <p>
-            Análisis epidemiológico y procesamiento de datos clínicos relacionados con silicosis en Andalucía.
-          </p>
-        </div>
-
-        <div class="card">
-          <h3>SSA_CYP</h3>
-          <p>
-            Sistema predictivo para optimización del momento de cosecha de lúpulo.
-          </p>
-        </div>
-
-        <div class="card">
-          <h3>KODA-IPEC</h3>
-          <p>
-            Plataforma inteligente para optimización de riego y fertilización en cultivos leñosos.
-          </p>
-        </div>
-
-        <div class="card">
-          <h3>PROLIVE</h3>
-          <p>
-            Gemelo digital para monitorización y modelado del olivar intensivo.
-          </p>
-        </div>
-
-      </div>
+      <div class="card"><h3>PROPHECIA</h3><p>Ictus y exposoma.</p></div>
+      <div class="card"><h3>PRISMAX</h3><p>Migraña predictiva.</p></div>
+      <div class="card"><h3>Silicosis Andalucía</h3><p>Análisis clínico.</p></div>
+      <div class="card"><h3>SSA_CYP</h3><p>Cosecha inteligente.</p></div>
+      <div class="card"><h3>KODA-IPEC</h3><p>Riego optimizado.</p></div>
+      <div class="card"><h3>PROLIVE</h3><p>Gemelo digital olivar.</p></div>
 
     </div>
+  </div>
+</section>
 
-  </section>
+<!-- RESEARCH -->
+<section id="research">
+  <div class="container">
 
-  <!-- RESEARCH -->
+    <h2 class="section-title">Investigación</h2>
 
-  <section id="research">
+    <div class="publication">IEEE BigData 2025 — Xylella fastidiosa</div>
+    <div class="publication">Springer CCIS — L-Moments IoT</div>
+    <div class="publication">ICPRAM 2026 — modelos temporales</div>
 
-    <div class="container">
+  </div>
+</section>
 
-      <h2 class="section-title">
-        Investigación y publicaciones
-      </h2>
+<!-- CONTACT -->
+<section id="contact">
+  <div class="container">
 
-      <p class="section-subtitle">
-        Publicaciones científicas y contribuciones en inteligencia artificial, agricultura digital y análisis temporal.
-      </p>
+    <h2 class="section-title">Contacto</h2>
 
-      <div class="publication">
-        <h4>
-          Prediction of Evapotranspiration with Combined Models and Recurrent Neural Networks
-        </h4>
-        <p>
-          11th International Conference on Time Series and Forecasting — 2025
-        </p>
-      </div>
-
-      <div class="publication">
-        <h4>
-          Applying L-Moments Statistical Theory to Analyze Real-World Sensor Data from Orchards
-        </h4>
-        <p>
-          Springer CCIS — InnoComp 2025
-        </p>
-      </div>
-
-      <div class="publication">
-        <h4>
-          L-Moments for Robust Temporal Data Drift Monitoring in Agricultural IoT Systems
-        </h4>
-        <p>
-          Springer CCIS — InnoComp 2025
-        </p>
-      </div>
-
-      <div class="publication">
-        <h4>
-          Advanced Statistical Analysis for Early Detection of Xylella fastidiosa
-        </h4>
-        <p>
-          Accessible Digital Agriculture Technologies — 2025
-        </p>
-      </div>
-
-      <div class="publication">
-        <h4>
-          A Data-Driven Framework for Temporal Monitoring of Xylella fastidiosa in Almond Trees
-        </h4>
-        <p>
-          IEEE BigData — 2025
-        </p>
-      </div>
-
+    <div class="contact-links">
+      <a href="https://www.linkedin.com/in/jos%C3%A9-ram%C3%B3n-torres-mart%C3%ADn-975288193/">LinkedIn</a>
+      <a href="https://orcid.org/0009-0005-3046-3721">ORCID</a>
     </div>
 
-  </section>
+  </div>
+</section>
 
-  <!-- TECH -->
+<footer>
+  © 2026 José Ramón Torres Martín · AI Consultant
+</footer>
 
-  <section>
+<!-- 🎯 GRAFO ANIMADO -->
+<script>
+const canvas = document.getElementById("bg-canvas");
+const ctx = canvas.getContext("2d");
 
-    <div class="container">
+let w, h;
+let nodes = [];
 
-      <h2 class="section-title">
-        Stack tecnológico
-      </h2>
+function resize() {
+  w = canvas.width = window.innerWidth;
+  h = canvas.height = window.innerHeight;
+}
 
-      <div class="tech-stack">
+window.addEventListener("resize", resize);
+resize();
 
-        <div class="tech">Python</div>
-        <div class="tech">TensorFlow</div>
-        <div class="tech">PyTorch</div>
-        <div class="tech">Scikit-learn</div>
-        <div class="tech">XGBoost</div>
-        <div class="tech">Pandas</div>
-        <div class="tech">NumPy</div>
-        <div class="tech">SQL</div>
-        <div class="tech">Power BI</div>
-        <div class="tech">Plotly</div>
-        <div class="tech">Streamlit</div>
-        <div class="tech">Time Series</div>
-        <div class="tech">Digital Twins</div>
+function init() {
+  nodes = [];
+  let count = Math.floor(window.innerWidth / 18);
 
-      </div>
+  for (let i = 0; i < count; i++) {
+    nodes.push({
+      x: Math.random() * w,
+      y: Math.random() * h,
+      vx: (Math.random() - 0.5) * 0.6,
+      vy: (Math.random() - 0.5) * 0.6
+    });
+  }
+}
 
-    </div>
+function draw() {
+  ctx.clearRect(0, 0, w, h);
 
-  </section>
+  for (let i = 0; i < nodes.length; i++) {
+    let p = nodes[i];
 
-  <!-- CONTACT -->
+    p.x += p.vx;
+    p.y += p.vy;
 
-  <section id="contact">
+    if (p.x < 0 || p.x > w) p.vx *= -1;
+    if (p.y < 0 || p.y > h) p.vy *= -1;
 
-    <div class="container contact">
+    ctx.fillStyle = "#00C896";
+    ctx.beginPath();
+    ctx.arc(p.x, p.y, 2, 0, Math.PI * 2);
+    ctx.fill();
 
-      <h2 class="section-title">
-        Contacto
-      </h2>
+    for (let j = i + 1; j < nodes.length; j++) {
+      let q = nodes[j];
 
-      <p class="section-subtitle">
-        Disponible para proyectos de inteligencia artificial, investigación aplicada y colaboración tecnológica.
-      </p>
+      let dx = p.x - q.x;
+      let dy = p.y - q.y;
+      let dist = Math.sqrt(dx * dx + dy * dy);
 
-      <div class="contact-links">
+      if (dist < 140) {
+        ctx.strokeStyle = "rgba(79,140,255," + (1 - dist / 140) + ")";
+        ctx.beginPath();
+        ctx.moveTo(p.x, p.y);
+        ctx.lineTo(q.x, q.y);
+        ctx.stroke();
+      }
+    }
+  }
 
-        <a href="https://www.linkedin.com/in/jos%C3%A9-ram%C3%B3n-torres-mart%C3%ADn-975288193/" target="_blank">
-          LinkedIn
-        </a>
+  requestAnimationFrame(draw);
+}
 
-        <a href="https://orcid.org/0009-0005-3046-3721" target="_blank">
-          ORCID
-        </a>
-
-      </div>
-
-    </div>
-
-  </section>
-
-  <!-- FOOTER -->
-
-  <footer>
-
-    <div class="container">
-      © 2026 José Ramón Torres Martín · AI Consulting & Data Science
-    </div>
-
-  </footer>
+init();
+draw();
+</script>
 
 </body>
 </html>
