@@ -30,7 +30,7 @@
       overflow-x:hidden;
     }
 
-    /* 🎯 CANVAS GRAFO */
+    /* GRAFO BACKGROUND */
     #bg-canvas{
       position:fixed;
       top:0;
@@ -38,7 +38,8 @@
       width:100%;
       height:100%;
       z-index:-1;
-      opacity:0.20;
+      opacity:0.18;
+      pointer-events:none;
     }
 
     a{
@@ -51,8 +52,6 @@
       max-width:1200px;
       margin:auto;
     }
-
-    /* NAVBAR */
 
     nav{
       position:fixed;
@@ -73,7 +72,7 @@
 
     .logo{
       font-weight:800;
-      font-size:1.5rem;
+      font-size:1.2rem;
       color:#4F8CFF;
     }
 
@@ -91,8 +90,6 @@
     .nav-links a:hover{
       color:#4F8CFF;
     }
-
-    /* HERO */
 
     .hero{
       min-height:100vh;
@@ -174,6 +171,8 @@
 
     section{
       padding:120px 0;
+      position:relative;
+      z-index:1;
     }
 
     .section-title{
@@ -223,6 +222,16 @@
       margin-bottom:25px;
       background:#111827;
       border-radius:0 15px 15px 0;
+    }
+
+    .publication h4{
+      margin-bottom:10px;
+      color:white;
+    }
+
+    .publication p{
+      color:#cfd6e4;
+      font-size:0.95rem;
     }
 
     .tech-stack{
@@ -283,24 +292,30 @@
 
 <body>
 
-<!-- 🎯 GRAFO BACKGROUND -->
+<!-- GRAFO -->
 <canvas id="bg-canvas"></canvas>
 
 <!-- NAV -->
 <nav>
   <div class="container nav-content">
-    <div class="logo">JR Torres AI</div>
+
+    <div class="logo">
+      JR Torres AI
+    </div>
+
     <div class="nav-links">
       <a href="#about">Sobre mí</a>
       <a href="#projects">Proyectos</a>
       <a href="#research">Investigación</a>
       <a href="#contact">Contacto</a>
     </div>
+
   </div>
 </nav>
 
 <!-- HERO -->
 <section class="hero">
+
   <div class="container hero-content">
 
     <div class="badge">
@@ -318,73 +333,262 @@
 
     <p>
       Graduado en Matemáticas, doctorando en la Universidad Rey Juan Carlos y científico de datos desde 2020.
+      Especializado en machine learning, series temporales, análisis estadístico avanzado y gemelos digitales.
     </p>
 
     <div class="buttons">
-      <a href="#projects" class="btn btn-primary">Ver proyectos</a>
-      <a href="#contact" class="btn btn-secondary">Contacto</a>
+
+      <a href="#projects" class="btn btn-primary">
+        Ver proyectos
+      </a>
+
+      <a href="#contact" class="btn btn-secondary">
+        Contactar
+      </a>
+
     </div>
 
   </div>
+
 </section>
 
-<!-- (RESTO IGUAL, no lo repito para no hacerte scroll infinito) -->
-
+<!-- ABOUT -->
 <section id="about">
-  <div class="container">
-    <h2 class="section-title">Sobre mí</h2>
-    <p class="section-subtitle">
-      IA aplicada, investigación y ciencia de datos.
-    </p>
-  </div>
-</section>
 
-<section id="projects">
-  <div class="container">
-    <h2 class="section-title">Proyectos</h2>
-  </div>
-</section>
+    <div class="container">
 
-<section id="research">
-  <div class="container">
-    <h2 class="section-title">Investigación</h2>
-  </div>
-</section>
+      <h2 class="section-title">
+        Sobre mí
+      </h2>
 
-<section id="contact">
-  <div class="container contact">
-    <h2 class="section-title">Contacto</h2>
+      <p class="section-subtitle">
+        Soy científico de datos e investigador especializado en inteligencia artificial aplicada y análisis avanzado de datos.
+        Desde 2020 trabajo en proyectos de IA orientados a salud y agricultura inteligente, desarrollando modelos predictivos,
+        sistemas de monitorización y herramientas de soporte a la decisión basadas en machine learning y análisis temporal.
+      </p>
 
-    <div class="contact-links">
-      <a href="https://www.linkedin.com/in/jos%C3%A9-ram%C3%B3n-torres-mart%C3%ADn-975288193/">LinkedIn</a>
-      <a href="https://orcid.org/0009-0005-3046-3721">ORCID</a>
     </div>
-  </div>
-</section>
 
-<footer>
-  © 2026 José Ramón Torres Martín
-</footer>
+  </section>
 
-<!-- 🎯 SCRIPT GRAFO -->
+  <!-- PROJECTS -->
+
+  <section id="projects">
+
+    <div class="container">
+
+      <h2 class="section-title">
+        Proyectos
+      </h2>
+
+      <p class="section-subtitle">
+        Experiencia en proyectos de investigación y desarrollo de soluciones de IA en sectores estratégicos.
+      </p>
+
+      <div class="grid">
+
+        <div class="card">
+          <h3>PROPHECIA</h3>
+          <p>
+            Análisis de datos de ictus y exposoma del paciente mediante técnicas de machine learning y modelado estadístico.
+          </p>
+        </div>
+
+        <div class="card">
+          <h3>PRISMAX</h3>
+          <p>
+            Herramienta predictiva para anticipar crisis de migraña mediante análisis temporal y modelos de IA.
+          </p>
+        </div>
+
+        <div class="card">
+          <h3>Silicosis Andalucía</h3>
+          <p>
+            Análisis epidemiológico y procesamiento de datos clínicos relacionados con silicosis en Andalucía.
+          </p>
+        </div>
+
+        <div class="card">
+          <h3>SSA_CYP</h3>
+          <p>
+            Sistema predictivo para optimización del momento de cosecha de lúpulo.
+          </p>
+        </div>
+
+        <div class="card">
+          <h3>KODA-IPEC</h3>
+          <p>
+            Plataforma inteligente para optimización de riego y fertilización en cultivos leñosos.
+          </p>
+        </div>
+
+        <div class="card">
+          <h3>PROLIVE</h3>
+          <p>
+            Gemelo digital para monitorización y modelado del olivar intensivo.
+          </p>
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- RESEARCH -->
+
+  <section id="research">
+
+    <div class="container">
+
+      <h2 class="section-title">
+        Investigación y publicaciones
+      </h2>
+
+      <p class="section-subtitle">
+        Publicaciones científicas y contribuciones en inteligencia artificial, agricultura digital y análisis temporal.
+      </p>
+
+      <div class="publication">
+        <h4>
+          Prediction of Evapotranspiration with Combined Models and Recurrent Neural Networks
+        </h4>
+        <p>
+          11th International Conference on Time Series and Forecasting — 2025
+        </p>
+      </div>
+
+      <div class="publication">
+        <h4>
+          Applying L-Moments Statistical Theory to Analyze Real-World Sensor Data from Orchards
+        </h4>
+        <p>
+          Springer CCIS — InnoComp 2025
+        </p>
+      </div>
+
+      <div class="publication">
+        <h4>
+          L-Moments for Robust Temporal Data Drift Monitoring in Agricultural IoT Systems
+        </h4>
+        <p>
+          Springer CCIS — InnoComp 2025
+        </p>
+      </div>
+
+      <div class="publication">
+        <h4>
+          Advanced Statistical Analysis for Early Detection of Xylella fastidiosa
+        </h4>
+        <p>
+          Accessible Digital Agriculture Technologies — 2025
+        </p>
+      </div>
+
+      <div class="publication">
+        <h4>
+          A Data-Driven Framework for Temporal Monitoring of Xylella fastidiosa in Almond Trees
+        </h4>
+        <p>
+          IEEE BigData — 2025
+        </p>
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- TECH -->
+
+  <section>
+
+    <div class="container">
+
+      <h2 class="section-title">
+        Stack tecnológico
+      </h2>
+
+      <div class="tech-stack">
+
+        <div class="tech">Python</div>
+        <div class="tech">TensorFlow</div>
+        <div class="tech">PyTorch</div>
+        <div class="tech">Scikit-learn</div>
+        <div class="tech">XGBoost</div>
+        <div class="tech">Pandas</div>
+        <div class="tech">NumPy</div>
+        <div class="tech">SQL</div>
+        <div class="tech">Power BI</div>
+        <div class="tech">Plotly</div>
+        <div class="tech">Streamlit</div>
+        <div class="tech">Time Series</div>
+        <div class="tech">Digital Twins</div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- CONTACT -->
+
+  <section id="contact">
+
+    <div class="container contact">
+
+      <h2 class="section-title">
+        Contacto
+      </h2>
+
+      <p class="section-subtitle">
+        Disponible para proyectos de inteligencia artificial, investigación aplicada y colaboración tecnológica.
+      </p>
+
+      <div class="contact-links">
+
+        <a href="https://www.linkedin.com/in/jos%C3%A9-ram%C3%B3n-torres-mart%C3%ADn-975288193/" target="_blank">
+          LinkedIn
+        </a>
+
+        <a href="https://orcid.org/0009-0005-3046-3721" target="_blank">
+          ORCID
+        </a>
+
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- FOOTER -->
+
+  <footer>
+
+    <div class="container">
+      © 2026 José Ramón Torres Martín · AI Consulting & Data Science
+    </div>
+
+  </footer>
+
+<!-- GRAFO SCRIPT -->
 <script>
 const canvas = document.getElementById("bg-canvas");
 const ctx = canvas.getContext("2d");
 
-let w, h;
-let nodes = [];
+let w,h;
+let nodes=[];
 
 function resize(){
-  w = canvas.width = window.innerWidth;
-  h = canvas.height = window.innerHeight;
+  w=canvas.width=window.innerWidth;
+  h=canvas.height=window.innerHeight;
 }
 
-window.addEventListener("resize", resize);
+window.addEventListener("resize",resize);
 resize();
 
 function init(){
-  nodes = [];
-  let count = Math.floor(window.innerWidth / 18);
+  nodes=[];
+  let count=Math.floor(window.innerWidth/18);
 
   for(let i=0;i<count;i++){
     nodes.push({
@@ -400,10 +604,10 @@ function draw(){
   ctx.clearRect(0,0,w,h);
 
   for(let i=0;i<nodes.length;i++){
-    let p = nodes[i];
+    let p=nodes[i];
 
-    p.x += p.vx;
-    p.y += p.vy;
+    p.x+=p.vx;
+    p.y+=p.vy;
 
     if(p.x<0||p.x>w)p.vx*=-1;
     if(p.y<0||p.y>h)p.vy*=-1;
@@ -414,7 +618,7 @@ function draw(){
     ctx.fill();
 
     for(let j=i+1;j<nodes.length;j++){
-      let q = nodes[j];
+      let q=nodes[j];
       let dx=p.x-q.x;
       let dy=p.y-q.y;
       let d=Math.sqrt(dx*dx+dy*dy);
